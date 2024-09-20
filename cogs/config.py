@@ -2,7 +2,7 @@ from discord.ext import commands
 from discord import app_commands
 import discord
 
-class Debug(commands.Cog):
+class Config(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -11,4 +11,4 @@ class Debug(commands.Cog):
         print(f'{__name__} is online')
 
 async def setup(bot):
-    await bot.add_cog(Debug(bot))
+    await bot.add_cog(Config(bot))
