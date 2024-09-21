@@ -7,7 +7,6 @@ from discord.ext import commands
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
-
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
@@ -21,6 +20,8 @@ async def sync_tree(interaction: discord.Interaction):
             print(f'Synced: {len(synced)} command/s')
         except Exception as e:
             print('error syncing: ', e)
+    else:
+        await interaction.response.send_message(f'You do not have the necessary permissions', ephemeral=True)  # type: ignore
     await interaction.response.send_message(f'Commands were synced.', ephemeral=True)  # type: ignore
 
 
@@ -36,7 +37,6 @@ async def main():
     async with bot:
         await load()
         await bot.start(data['token'])
-        await sync_tree()
 
 
 asyncio.run(main())

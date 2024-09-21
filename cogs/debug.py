@@ -12,7 +12,7 @@ class Debug(commands.Cog):
 
     @app_commands.command()
     async def ping(self, interaction: discord.Interaction):
-        await interaction.response.send_message('Pong! {0}s'.format(round(self.bot.latency, 1)), ephemeral=True)
+        await interaction.response.send_message('Pong! {0}s'.format(round(self.bot.latency, 2)), ephemeral=True)
 
 async def setup(bot):
     await bot.add_cog(Debug(bot))
